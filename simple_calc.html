@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .dark-mode {
+            background-color: black;
+            color: white;
+            transition-duration: 2s;
+            transition-timing-function: ease;
+        }
+
+        .text-box {
+            padding: 20px;
+            border: 2px solid #333;
+            margin: 20px;
+        }
+
+        .but{
+            height: 50px;
+            width: 50px;
+            margin: 5px;
+            font-size: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>CALCULATOR</h1>
+        <button onclick="changebg()">DARK MODE</button>
+        <br>
+        <div class="text-box">
+            <h2 id="displaytext">  </h2>
+        </div>
+        <div class="text-box">
+            <input type="button" class="but" value="1" onclick="enter()">
+            <input type="button" class="but" value="2" onclick="enter()">
+            <input type="button" class="but" value="3" onclick="enter()">
+            <input type="button" class="but" value=" + " onclick="enter()">
+            <br>
+            <input type="button" class="but" value="4" onclick="enter()">
+            <input type="button" class="but" value="5" onclick="enter()">
+            <input type="button" class="but" value="6" onclick="enter()">
+            <input type="button" class="but" value=" - " onclick="enter()">
+            <br>
+            <input type="button" class="but" value="7" onclick="enter()">
+            <input type="button" class="but" value="8" onclick="enter()">
+            <input type="button" class="but" value="9" onclick="enter()">
+            <input type="button" class="but" value=" * " onclick="enter()">
+            <br>
+            <input type="button" class="but" id="cla" value="C" onclick="clear()">
+            <input type="button" class="but" value="0" onclick="enter()">
+            <input type="button" class="but" id ="sub" value="=" onclick="submit()">
+            <input type="button" class="but" value=" / " onclick="enter()">
+            
+        </div>
+    </div>
+</body>
+
+<script>
+
+    function enter(){
+        var num = event.srcElement.value;
+        document.getElementById('displaytext').innerText += num;
+    }
+
+    function changebg(){
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("cla").addEventListener("click", function() {
+            document.getElementById('displaytext').innerText = "";
+
+            });
+        });
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("sub").addEventListener("click", function() {
+            var result = eval(document.getElementById('displaytext').innerText);
+            document.getElementById('displaytext').innerText = result;
+
+            });
+        });
+</script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
